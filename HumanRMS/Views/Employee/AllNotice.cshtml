@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HumanRMS.Models.notice_info>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+<link href="~/css/employeeindex.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Employee/Dashbord" style="color:darkblue">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All-Notice</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="info">
+        <h2>Notice List</h2>
+        @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+        <div style="height: auto; overflow-y: scroll">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notice_subject)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notice_date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notice_time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notice_dis)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notice_subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notice_date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notice_time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notice_dis)
+                        </td>
+                        @*<td>
+                                <span class="fa fa-pencil">&nbsp;@Html.ActionLink("Edit", "Edit", new { id = item.notice_id }) </span>
+                                <i class="fa fa-eye">&nbsp;@Html.ActionLink("Detail", "Details", new { id = item.notice_id })</i>
+                                <i class="fa fa-trash">&nbsp;@Html.ActionLink("Delete", "Delete", new { id = item.notice_id })</i>
+                            </td>*@
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+

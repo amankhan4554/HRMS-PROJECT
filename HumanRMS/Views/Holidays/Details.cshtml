@@ -1,0 +1,66 @@
+﻿@model HumanRMS.Models.holiday
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>holiday</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendance.att_work)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendance.att_work)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employee_info.emp_fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.holiday_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

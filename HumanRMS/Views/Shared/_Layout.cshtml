@@ -1,0 +1,260 @@
+﻿<!--/////////////////User LayOut full-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Human Resourse Management</title>
+    <!-- Favicons -->
+    <link href="~/images/AlfaOrigen.jpg" rel="icon">
+    <link href="~/images/AlfaOrigen.jpg" rel="apple-touch-icon">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/css/style-starter.css">
+    <link href="~/css/Main.css" rel="stylesheet" />
+    <link href="~/css/user/animate.min.css" rel="stylesheet" />
+
+    <style>
+        .fa-chevron-right{
+            font-size:12px;
+            color:white;
+        }
+            .fa-chevron-right:hover {
+                color: #a2cce3;
+            }
+    </style>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+    <div class="se-pre-con"></div>
+    <section>
+        @{
+
+            var institute = "";
+            if (TempData.ContainsKey("institute"))
+            {
+                institute = TempData["institute"] as string;
+            }
+
+        }
+
+
+        <!-- sidebar menu start -->
+        <div>
+
+            <!-- logo start -->
+            <div class="logo">
+                <h3><a href="~/home/index">Alfa Origin</a></h3>
+            </div>
+            <!-- //image logo -->
+            @*<div class="logo-icon text-center">
+                    <a href="~/home/index" title="logo"><img src="~/images/logo.png" alt="logo-icon"> </a>
+                </div>*@
+            <!-- //logo end -->
+
+
+            <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+                <div class="container d-flex justify-content-between align-items-center">
+
+                    <div class="logo">
+                        <h3 class="text-light"><a href="~/home/index"><span>Alfa Origin</span></a></h3>
+                        <!-- Uncomment below if you prefer to use an image logo -->
+                        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                    </div>
+
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <li><a class="active " href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Home/About">About</a></li>
+                            <li><a href="~/Home/Services">Services</a></li>
+                            <li><a href="~/Home/Project">Project</a></li>
+                            <li><a href="~/Home/Help">Contact</a></li>
+                            <li><a href="~/account/Login"> <span>Log In</span></a></li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav><!-- .navbar -->
+
+                </div>
+            </header><!-- End Header -->
+          </div>
+    </section>
+
+
+    <button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+    @RenderBody()
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/jquery-1.10.2.min.js"></script>
+
+    <!-- chart js -->
+    <script src="~/js/Chart.min.js"></script>
+    <script src="~/js/utils.js"></script>
+    <!-- //chart js -->
+    <!-- Different scripts of charts.  Ex.Barchart, Linechart -->
+    <script src="~/js/bar.js"></script>
+    <script src="~/js/linechart.js"></script>
+    <!-- //Different scripts of charts.  Ex.Barchart, Linechart -->
+
+
+    <script src="~/js/jquery.nicescroll.js"></script>
+    <script src="~/js/scripts.js"></script>
+
+    <!-- close script -->
+    <script>
+        var closebtns = document.getElementsByClassName("close-grid");
+        var i;
+
+        for (i = 0; i < closebtns.length; i++) {
+            closebtns[i].addEventListener("click", function () {
+                this.parentElement.style.display = 'none';
+            });
+        }
+    </script>
+    <!-- //close script -->
+    <!-- disable body scroll when navbar is in active -->
+    <script>
+        $(function () {
+            $('.sidebar-menu-collapsed').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- disable body scroll when navbar is in active -->
+    <!-- loading-gif Js -->
+    <script src="~/js/modernizr.js"></script>
+    <script>
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!--// loading-gif Js -->
+    <!-- Bootstrap Core JavaScript -->
+    <div >
+        
+        @*<footer>
+
+            <p style="text-align:center" class="mb-3">
+               
+            </p>
+        </footer>*@
+        <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500" >
+
+            <div class="footer-newsletter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Our Newsletter</h4>
+                            <p style="color:#ffff">Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <form action="mailto:amanaks4554@gmail.com" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="fa fa-chevron-right"></i> <a href="~/Home/Index">Home</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="~/Home/About">About us</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="~/Home/Services">Services</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="~/Home/Project">Project</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="~/Home/Privacy">Privacy policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><i class="fa fa-chevron-right"></i> <a href="#">Web Design</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="#">Web Development</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="#">Product Management</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="#">Marketing</a></li>
+                                <li><i class="fa fa-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h4>Contact Us</h4>
+                            <p style="color:#ffff">
+                                FW98+99M, Bypass,<br> Kot Addu, Muzaffargarh,<br> Punjab <br>
+                                <strong>Phone:</strong> <a href="tel:+923070208691" style="color:white">+92 3070208691</a><br>
+                                <strong>Email:</strong><a href="mailto:amanaks4554@gmail.com" style="color:white"> amanaks4554@gmail.com</a><br>
+                            </p>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-info">
+                            <h3>About Moderna</h3>
+                            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                            <div class="social-links mt-3" >
+                                <a href="https://twitter.com/amanlove6628" ><i class="fa fa-twitter" style="color:white"></i></a>
+                                <a href="https://www.facebook.com/aman.hera.10/" ><i class="fa fa-facebook" style="color:white"></i></a>
+                                <a href="https://www.instagram.com/amanlove6628/" ><i class="fa fa-instagram " style="color:white"></i></a>
+                                <a href="https://www.linkedin.com/in/aman-ullah-836a3a20b/" ><i class="fa fa-linkedin " style="color:white"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Alfa Origin</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    
+                    Designed by <a href="~/account/Login">AmanUllah</a>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+
+    </div>
+    <script src="~/js/user/main.js"></script>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

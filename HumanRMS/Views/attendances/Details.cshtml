@@ -1,0 +1,73 @@
+﻿@model HumanRMS.Models.attendance
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/css/detailemployee.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/attendance/index" style="color:darkblue">Attendance</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detail-Attendance</li>
+            </ol>
+        </nav>
+
+    </div>
+    
+
+        <div class="dl-horizontal">
+            <h2>Details</h2>
+            <hr />
+            <dl >
+                <dt>
+                    @Html.DisplayNameFor(model => model.att_date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.att_date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.att_clock_in)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.att_clock_in)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.att_clock_out)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.att_clock_out)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.att_work)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.att_work)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.employee_info.emp_fname)
+                </dd>
+
+            </dl>
+            <p class="btn-default">
+                <i class="fa fa-pencil-square-o"> &nbsp;@Html.ActionLink("Edit", "Edit", new { id = Model.att_id })</i>
+                <i class="fa fa-arrow-circle-o-left">&nbsp; @Html.ActionLink("Back to List", "Index")</i>
+            </p>
+        </div>
+
+</div>

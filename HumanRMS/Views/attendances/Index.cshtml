@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HumanRMS.Models.attendance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/css/employeeindex.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Admin/Dashboard" style="color:darkblue">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Attendance-List</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="info">
+        <h2>Attendances List</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.att_date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.att_clock_in)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.att_clock_out)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.att_work)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.att_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.att_clock_in)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.att_clock_out)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.att_work)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.employee_info.emp_fname)
+                    </td>
+                    <td>
+                        <i class="fa fa-pencil">&nbsp;@Html.ActionLink("Edit", "Edit", new { id = item.att_id }) </i>
+                        <i class="fa fa-eye">&nbsp;@Html.ActionLink("Detail", "Details", new { id = item.att_id })</i>
+                        <i class="fa fa-trash">&nbsp;@Html.ActionLink("Delete", "Delete", new { id = item.att_id })</i>
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>
+</div>

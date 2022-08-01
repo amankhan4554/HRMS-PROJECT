@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HumanRMS.Models.emp_leaves>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.leave_yearly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deducated_leave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remaining_leave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attendance.att_work)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.leave_yearly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deducated_leave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.remaining_leave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.attendance.att_work)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.employee_info.emp_fname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.leave_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.leave_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.leave_id })
+        </td>
+    </tr>
+}
+
+</table>

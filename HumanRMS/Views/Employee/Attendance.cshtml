@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HumanRMS.Models.attendance>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.att_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.att_clock_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.att_clock_out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.att_work)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.att_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.att_clock_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.att_clock_out)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.att_work)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.employee_info.emp_fname)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.att_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.att_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.att_id })
+        </td>*@
+    </tr>
+}
+
+</table>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HumanRMS.Models.employee_info>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/css/employeeindex.css" rel="stylesheet" />
+
+    <div class="main-content">
+        <div class="container-fluid content-top-gap">
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb my-breadcrumb">
+                    <li class="breadcrumb-item"><a href="~/Admin/Dashboard" style="color:darkblue">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Employee-List</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="info">
+            <h2>Employees</h2>
+                <div style="height: auto; overflow-y: scroll">
+                    @using (Html.BeginForm("Index", "employee_info", FormMethod.Get))
+                    {
+                        @Html.TextBox("Searching")<input type="submit" value="Search" />
+                    }
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_fname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_lname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_cnic)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_salary)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_gender)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.emp_mobile)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_fname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_lname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_cnic)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_salary)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.emp_mobile)
+                                </td>
+                                <td>
+                                    <i class="fa fa-pencil">&nbsp;@Html.ActionLink("Edit", "Edit", new { id = item.emp_id }) </i>
+                                    <i class="fa fa-eye">&nbsp;@Html.ActionLink("Detail", "Details", new { id = item.emp_id })</i>
+                                    <i class="fa fa-trash">&nbsp;@Html.ActionLink("Delete", "Delete", new { id = item.emp_id })</i>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+        </div>
+    </div>

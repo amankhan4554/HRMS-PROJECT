@@ -1,0 +1,93 @@
+﻿@model HumanRMS.Models.employee_info
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/css/deleteemployee.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/employee_info/index" style="color:darkblue">Employee</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Delete-Employee</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="dl-horizontal">
+
+        <h2>Delete Employee Information</h2>
+        <h3>Are you sure you want to delete this?</h3>
+        <h4>Employee Information</h4>
+
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_fname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_lname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_lname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_cnic)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_cnic)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_salary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_mobile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_mobile)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+                <i class="fa fa-arrow-circle-o-left"> &nbsp;@Html.ActionLink("Back to List", "Index")</i>
+            </div>
+        }
+    </div>
+    </div>

@@ -1,0 +1,80 @@
+﻿@model HumanRMS.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/css/detailemployee.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Events/index" style="color:darkblue">Events</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detail-Events</li>
+            </ol>
+        </nav>
+
+    </div>
+
+    <div class="dl-horizontal">
+        <h2>Event Details</h2>
+
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Start)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Start)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ThemeColor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ThemeColor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsFullday)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsFullday)
+            </dd>
+
+        </dl>
+        <p class="btn-default">
+            <i class="fa fa-pencil-square-o"> &nbsp;@Html.ActionLink("Edit", "Edit", new { id = Model.EventID })</i>
+            <i class="fa fa-arrow-circle-o-left">&nbsp; @Html.ActionLink("Back to List", "Index")</i>
+        </p>
+    </div>
+    
+    </div>

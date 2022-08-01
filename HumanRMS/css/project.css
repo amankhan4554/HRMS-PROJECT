@@ -1,0 +1,108 @@
+﻿body {
+    background-color: #EEEEEE;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+/* about section */
+.about_section {
+    margin-top: 45px;
+    text-align: center;
+}
+
+    .about_section h2 {
+        text-transform: uppercase;
+    }
+
+    .about_section h4 {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+.about_card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.about_card .about-detail {
+    padding: 2px 25px 35px 25px;
+}
+
+.about_img-container {
+    width: 225px;
+    background-color: #4755ab;
+    height: 225px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 25px solid #d7daf4;
+    margin: 0 auto 45px auto;
+}
+
+.about_card .about_img-box {
+    width: 75px;
+}
+
+.about_card .about-detail p {
+    margin-top: 15px;
+}
+
+.about_card img {
+    width: 100%;
+}
+
+/* end about section */
+
+
+/* feature section */
+
+.feature_section {
+    text-align: center;
+}
+
+.feature_card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature_img-container {
+    background-color: #4755ab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 190px;
+    border-radius: 10px;
+}
+
+.feature_img-box {
+    width: 100px;
+}
+
+.feature_card {
+    width: 300px;
+    padding: 0 15px;
+    margin: 35px 0;
+}
+
+    .feature_card h5 {
+        text-transform: uppercase;
+    }
+
+    .feature_card img {
+        width: 100%;
+    }
+
+.feature_detail-box {
+    margin: 35px auto 0 auto;
+}
+
+    .feature_detail-box h4 {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+/* end feature section */
+

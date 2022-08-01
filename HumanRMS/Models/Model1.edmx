@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin_log">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="admin_password" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="attendances">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="att_date" Type="date" Nullable="false" />
+          <Property Name="att_clock_in" Type="time" Precision="7" Nullable="false" />
+          <Property Name="att_clock_out" Type="time" Precision="7" Nullable="false" />
+          <Property Name="att_fk_emp_id" Type="int" />
+          <Property Name="att_work" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="emp_leaves">
+          <Key>
+            <PropertyRef Name="leave_id" />
+          </Key>
+          <Property Name="leave_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="leave_yearly" Type="int" Nullable="false" />
+          <Property Name="deducated_leave" Type="int" Nullable="false" />
+          <Property Name="remaining_leave" Type="int" Nullable="false" />
+          <Property Name="leave_fk_emp_id" Type="int" />
+          <Property Name="leave_fk_att_id" Type="int" />
+        </EntityType>
+        <EntityType Name="employee_info">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_fname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="emp_lname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="emp_email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="emp_mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="emp_salary" Type="int" />
+          <Property Name="emp_gender" Type="varchar" MaxLength="10" />
+          <Property Name="emp_cnic" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="ThemeColor" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="IsFullday" Type="bit" />
+        </EntityType>
+        <EntityType Name="holidays">
+          <Key>
+            <PropertyRef Name="holiday_id" />
+          </Key>
+          <Property Name="holiday_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="holiday_month" Type="date" Nullable="false" />
+          <Property Name="holiday_day" Type="date" Nullable="false" />
+          <Property Name="holiday_year" Type="date" Nullable="false" />
+          <Property Name="holiday_description" Type="varchar" MaxLength="155" Nullable="false" />
+          <Property Name="holiday_fk_emp_id" Type="int" />
+          <Property Name="holiday_fk_att_id" Type="int" />
+        </EntityType>
+        <EntityType Name="hrdepartment">
+          <Key>
+            <PropertyRef Name="dept_id" />
+          </Key>
+          <Property Name="dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dept_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="notice_info">
+          <Key>
+            <PropertyRef Name="notice_id" />
+          </Key>
+          <Property Name="notice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notice_subject" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="notice_date" Type="date" Nullable="false" />
+          <Property Name="notice_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="notice_dis" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__attendanc__att_f__31EC6D26">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="attendances" Type="Self.attendances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="attendances">
+              <PropertyRef Name="att_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emp_leave__leave__34C8D9D1">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="emp_leaves" Type="Self.emp_leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="emp_leaves">
+              <PropertyRef Name="leave_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emp_leave__leave__35BCFE0A">
+          <End Role="attendances" Type="Self.attendances" Multiplicity="0..1" />
+          <End Role="emp_leaves" Type="Self.emp_leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attendances">
+              <PropertyRef Name="att_id" />
+            </Principal>
+            <Dependent Role="emp_leaves">
+              <PropertyRef Name="leave_fk_att_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__holidays__holida__38996AB5">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="holidays" Type="Self.holidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="holidays">
+              <PropertyRef Name="holiday_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__holidays__holida__398D8EEE">
+          <End Role="attendances" Type="Self.attendances" Multiplicity="0..1" />
+          <End Role="holidays" Type="Self.holidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attendances">
+              <PropertyRef Name="att_id" />
+            </Principal>
+            <Dependent Role="holidays">
+              <PropertyRef Name="holiday_fk_att_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRMSModelStoreContainer">
+          <EntitySet Name="admin_log" EntityType="Self.admin_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="attendances" EntityType="Self.attendances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emp_leaves" EntityType="Self.emp_leaves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_info" EntityType="Self.employee_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="holidays" EntityType="Self.holidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hrdepartment" EntityType="Self.hrdepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notice_info" EntityType="Self.notice_info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__attendanc__att_f__31EC6D26" Association="Self.FK__attendanc__att_f__31EC6D26">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="attendances" EntitySet="attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emp_leave__leave__34C8D9D1" Association="Self.FK__emp_leave__leave__34C8D9D1">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="emp_leaves" EntitySet="emp_leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emp_leave__leave__35BCFE0A" Association="Self.FK__emp_leave__leave__35BCFE0A">
+            <End Role="attendances" EntitySet="attendances" />
+            <End Role="emp_leaves" EntitySet="emp_leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__holidays__holida__38996AB5" Association="Self.FK__holidays__holida__38996AB5">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="holidays" EntitySet="holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__holidays__holida__398D8EEE" Association="Self.FK__holidays__holida__398D8EEE">
+            <End Role="attendances" EntitySet="attendances" />
+            <End Role="holidays" EntitySet="holidays" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin_log">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="att_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="att_clock_in" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="att_clock_out" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="att_fk_emp_id" Type="Int32" />
+          <Property Name="att_work" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employee_info" Relationship="Self.FK__attendanc__att_f__31EC6D26" FromRole="attendances" ToRole="employee_info" />
+          <NavigationProperty Name="emp_leaves" Relationship="Self.FK__emp_leave__leave__35BCFE0A" FromRole="attendances" ToRole="emp_leaves" />
+          <NavigationProperty Name="holidays" Relationship="Self.FK__holidays__holida__398D8EEE" FromRole="attendances" ToRole="holidays" />
+        </EntityType>
+        <EntityType Name="emp_leaves">
+          <Key>
+            <PropertyRef Name="leave_id" />
+          </Key>
+          <Property Name="leave_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="leave_yearly" Type="Int32" Nullable="false" />
+          <Property Name="deducated_leave" Type="Int32" Nullable="false" />
+          <Property Name="remaining_leave" Type="Int32" Nullable="false" />
+          <Property Name="leave_fk_emp_id" Type="Int32" />
+          <Property Name="leave_fk_att_id" Type="Int32" />
+          <NavigationProperty Name="attendance" Relationship="Self.FK__emp_leave__leave__35BCFE0A" FromRole="emp_leaves" ToRole="attendances" />
+          <NavigationProperty Name="employee_info" Relationship="Self.FK__emp_leave__leave__34C8D9D1" FromRole="emp_leaves" ToRole="employee_info" />
+        </EntityType>
+        <EntityType Name="employee_info">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_lname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_cnic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="emp_gender" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="emp_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="attendances" Relationship="Self.FK__attendanc__att_f__31EC6D26" FromRole="employee_info" ToRole="attendances" />
+          <NavigationProperty Name="emp_leaves" Relationship="Self.FK__emp_leave__leave__34C8D9D1" FromRole="employee_info" ToRole="emp_leaves" />
+          <NavigationProperty Name="holidays" Relationship="Self.FK__holidays__holida__38996AB5" FromRole="employee_info" ToRole="holidays" />
+          <Property Name="emp_salary" Type="Int32" />
+        </EntityType>
+        <EntityType Name="holiday">
+          <Key>
+            <PropertyRef Name="holiday_id" />
+          </Key>
+          <Property Name="holiday_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="holiday_month" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="holiday_day" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="holiday_year" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="holiday_description" Type="String" MaxLength="155" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="holiday_fk_emp_id" Type="Int32" />
+          <Property Name="holiday_fk_att_id" Type="Int32" />
+          <NavigationProperty Name="attendance" Relationship="Self.FK__holidays__holida__398D8EEE" FromRole="holidays" ToRole="attendances" />
+          <NavigationProperty Name="employee_info" Relationship="Self.FK__holidays__holida__38996AB5" FromRole="holidays" ToRole="employee_info" />
+        </EntityType>
+        <EntityType Name="hrdepartment">
+          <Key>
+            <PropertyRef Name="dept_id" />
+          </Key>
+          <Property Name="dept_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dept_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__attendanc__att_f__31EC6D26">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="attendances" Type="Self.attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="attendances">
+              <PropertyRef Name="att_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emp_leave__leave__35BCFE0A">
+          <End Role="attendances" Type="Self.attendance" Multiplicity="0..1" />
+          <End Role="emp_leaves" Type="Self.emp_leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attendances">
+              <PropertyRef Name="att_id" />
+            </Principal>
+            <Dependent Role="emp_leaves">
+              <PropertyRef Name="leave_fk_att_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__holidays__holida__398D8EEE">
+          <End Role="attendances" Type="Self.attendance" Multiplicity="0..1" />
+          <End Role="holidays" Type="Self.holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="attendances">
+              <PropertyRef Name="att_id" />
+            </Principal>
+            <Dependent Role="holidays">
+              <PropertyRef Name="holiday_fk_att_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emp_leave__leave__34C8D9D1">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="emp_leaves" Type="Self.emp_leaves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="emp_leaves">
+              <PropertyRef Name="leave_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__holidays__holida__38996AB5">
+          <End Role="employee_info" Type="Self.employee_info" Multiplicity="0..1" />
+          <End Role="holidays" Type="Self.holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_info">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="holidays">
+              <PropertyRef Name="holiday_fk_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin_log" EntityType="Self.admin_log" />
+          <EntitySet Name="attendances" EntityType="Self.attendance" />
+          <EntitySet Name="emp_leaves" EntityType="Self.emp_leaves" />
+          <EntitySet Name="employee_info" EntityType="Self.employee_info" />
+          <EntitySet Name="holidays" EntityType="Self.holiday" />
+          <EntitySet Name="hrdepartments" EntityType="Self.hrdepartment" />
+          <AssociationSet Name="FK__attendanc__att_f__31EC6D26" Association="Self.FK__attendanc__att_f__31EC6D26">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="attendances" EntitySet="attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emp_leave__leave__35BCFE0A" Association="Self.FK__emp_leave__leave__35BCFE0A">
+            <End Role="attendances" EntitySet="attendances" />
+            <End Role="emp_leaves" EntitySet="emp_leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__holidays__holida__398D8EEE" Association="Self.FK__holidays__holida__398D8EEE">
+            <End Role="attendances" EntitySet="attendances" />
+            <End Role="holidays" EntitySet="holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emp_leave__leave__34C8D9D1" Association="Self.FK__emp_leave__leave__34C8D9D1">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="emp_leaves" EntitySet="emp_leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__holidays__holida__38996AB5" Association="Self.FK__holidays__holida__38996AB5">
+            <End Role="employee_info" EntitySet="employee_info" />
+            <End Role="holidays" EntitySet="holidays" />
+          </AssociationSet>
+          <EntitySet Name="Events" EntityType="HRMSModel.Event" />
+          <EntitySet Name="notice_info" EntityType="HRMSModel.notice_info" />
+        </EntityContainer>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ThemeColor" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="IsFullday" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="notice_info">
+          <Key>
+            <PropertyRef Name="notice_id" />
+          </Key>
+          <Property Name="notice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notice_subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="notice_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="notice_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="notice_dis" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRMSModelStoreContainer" CdmEntityContainer="HRMSEntities">
+          <EntitySetMapping Name="admin_log">
+            <EntityTypeMapping TypeName="HRMSModel.admin_log">
+              <MappingFragment StoreEntitySet="admin_log">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendances">
+            <EntityTypeMapping TypeName="HRMSModel.attendance">
+              <MappingFragment StoreEntitySet="attendances">
+                <ScalarProperty Name="att_id" ColumnName="att_id" />
+                <ScalarProperty Name="att_date" ColumnName="att_date" />
+                <ScalarProperty Name="att_clock_in" ColumnName="att_clock_in" />
+                <ScalarProperty Name="att_clock_out" ColumnName="att_clock_out" />
+                <ScalarProperty Name="att_fk_emp_id" ColumnName="att_fk_emp_id" />
+                <ScalarProperty Name="att_work" ColumnName="att_work" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emp_leaves">
+            <EntityTypeMapping TypeName="HRMSModel.emp_leaves">
+              <MappingFragment StoreEntitySet="emp_leaves">
+                <ScalarProperty Name="leave_id" ColumnName="leave_id" />
+                <ScalarProperty Name="leave_yearly" ColumnName="leave_yearly" />
+                <ScalarProperty Name="deducated_leave" ColumnName="deducated_leave" />
+                <ScalarProperty Name="remaining_leave" ColumnName="remaining_leave" />
+                <ScalarProperty Name="leave_fk_emp_id" ColumnName="leave_fk_emp_id" />
+                <ScalarProperty Name="leave_fk_att_id" ColumnName="leave_fk_att_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee_info">
+            <EntityTypeMapping TypeName="HRMSModel.employee_info">
+              <MappingFragment StoreEntitySet="employee_info">
+                <ScalarProperty Name="emp_salary" ColumnName="emp_salary" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_fname" ColumnName="emp_fname" />
+                <ScalarProperty Name="emp_lname" ColumnName="emp_lname" />
+                <ScalarProperty Name="emp_cnic" ColumnName="emp_cnic" />
+                <ScalarProperty Name="emp_gender" ColumnName="emp_gender" />
+                <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+                <ScalarProperty Name="emp_mobile" ColumnName="emp_mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="holidays">
+            <EntityTypeMapping TypeName="HRMSModel.holiday">
+              <MappingFragment StoreEntitySet="holidays">
+                <ScalarProperty Name="holiday_id" ColumnName="holiday_id" />
+                <ScalarProperty Name="holiday_month" ColumnName="holiday_month" />
+                <ScalarProperty Name="holiday_day" ColumnName="holiday_day" />
+                <ScalarProperty Name="holiday_year" ColumnName="holiday_year" />
+                <ScalarProperty Name="holiday_description" ColumnName="holiday_description" />
+                <ScalarProperty Name="holiday_fk_emp_id" ColumnName="holiday_fk_emp_id" />
+                <ScalarProperty Name="holiday_fk_att_id" ColumnName="holiday_fk_att_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hrdepartments">
+            <EntityTypeMapping TypeName="HRMSModel.hrdepartment">
+              <MappingFragment StoreEntitySet="hrdepartment">
+                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="HRMSModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="IsFullday" ColumnName="IsFullday" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="ThemeColor" ColumnName="ThemeColor" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notice_info">
+            <EntityTypeMapping TypeName="HRMSModel.notice_info">
+              <MappingFragment StoreEntitySet="notice_info">
+                <ScalarProperty Name="notice_dis" ColumnName="notice_dis" />
+                <ScalarProperty Name="notice_time" ColumnName="notice_time" />
+                <ScalarProperty Name="notice_date" ColumnName="notice_date" />
+                <ScalarProperty Name="notice_subject" ColumnName="notice_subject" />
+                <ScalarProperty Name="notice_id" ColumnName="notice_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<HumanRMS.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/css/employeeindex.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Admin/Dashboard" style="color:darkblue">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Event-List</li>
+            </ol>
+        </nav>
+
+    </div>
+
+    <div class="info">
+        <h2>Events List</h2>
+
+        <div style="height: auto; overflow-y: scroll">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Subject)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Start)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThemeColor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFullday)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Start)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThemeColor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsFullday)
+                        </td>
+                        <td>
+                            <i class="fa fa-pencil">&nbsp;@Html.ActionLink("Edit", "Edit", new { id = item.EventID }) </i>
+                            <i class="fa fa-eye">&nbsp;@Html.ActionLink("Detail", "Details", new { id = item.EventID })</i>
+                            <i class="fa fa-trash">&nbsp;@Html.ActionLink("Delete", "Delete", new { id = item.EventID })</i>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

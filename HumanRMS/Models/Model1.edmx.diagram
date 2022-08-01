@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a208eaa2eeb240da92a2063d4fb40566" Name="Diagram1">
+        <EntityTypeShape EntityType="HRMSModel.admin_log" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.attendance" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.emp_leaves" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.employee_info" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.holiday" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRMSModel.hrdepartment" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="HRMSModel.FK__attendanc__att_f__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__emp_leave__leave__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__holidays__holida__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__emp_leave__leave__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRMSModel.FK__holidays__holida__38996AB5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HRMSModel.Event" Width="1.5" PointX="3.25" PointY="9.375" />
+        <EntityTypeShape EntityType="HRMSModel.notice_info" Width="1.5" PointX="0.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

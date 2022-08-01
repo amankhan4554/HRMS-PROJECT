@@ -1,0 +1,72 @@
+﻿@model HumanRMS.Models.holiday
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>holiday</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.holiday_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.holiday_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendance.att_work)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendance.att_work)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employee_info.emp_fname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

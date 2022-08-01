@@ -1,0 +1,51 @@
+﻿body {
+    background-color: #EEEEEE;
+    font-family: 'Ubuntu', sans-serif;
+}
+.call-w3 {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.mobile-info {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.fa-users {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-recycle {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-bar-chart {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-refresh {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-usb {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-building {
+    color: #4755ab;
+    font-size: 20px;
+}
+.title-left {
+    padding-top: 50px;
+}
+.btn-primary {
+    background: #4755ab;
+    color: white;
+}
+
+    .btn-primary:hover {
+        color: black;
+        border-radius: 20px;
+    }
+img {
+    border-radius: 10px;
+}

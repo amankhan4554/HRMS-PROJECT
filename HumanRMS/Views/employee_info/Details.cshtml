@@ -1,0 +1,87 @@
+﻿@model HumanRMS.Models.employee_info
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/css/detailemployee.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/employee_info/index" style="color:darkblue">Employee</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detail-Employee</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="dl-horizontal">
+        <h2>Details Employee</h2>
+        <h4>Employee Information</h4>
+       
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_fname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_lname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_lname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_cnic)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_cnic)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_salary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.emp_mobile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.emp_mobile)
+            </dd>
+        </dl>
+        <p class="btn-default">
+            <i class="fa fa-pencil-square-o"> &nbsp;@Html.ActionLink("Edit", "Edit", new { id = Model.emp_id })</i>
+            <i class="fa fa-arrow-circle-o-left">&nbsp; @Html.ActionLink("Back to List", "Index")</i>
+        </p>
+    </div>
+
+    </div>

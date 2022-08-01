@@ -1,0 +1,58 @@
+﻿@model HumanRMS.Models.emp_leaves
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>emp_leaves</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.leave_yearly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leave_yearly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deducated_leave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deducated_leave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remaining_leave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remaining_leave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendance.att_work)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendance.att_work)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employee_info.emp_fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employee_info.emp_fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.leave_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

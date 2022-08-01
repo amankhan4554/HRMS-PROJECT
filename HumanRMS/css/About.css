@@ -1,0 +1,247 @@
+﻿body {
+    background-color: #EEEEEE;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.w3l-about {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.title{
+    font-size:22px;
+    color:#4755ab;
+    font-weight:700;
+}
+.mobile-info {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.fa-html5 {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-gamepad {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-id-badge {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-css3 {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-keyboard-o {
+    color: #4755ab;
+    font-size: 20px;
+}
+.fa-recycle {
+    color: #4755ab;
+    font-size:20px;
+}
+
+.team-content {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.team-main-6 {
+    box-sizing: border-box;
+    box-shadow: #4755AB 7px 7px;
+    border-radius: 20px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+.team-name {
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.fa-facebook{
+    background-color:transparent;
+    color:#4755ab;
+    font-size:18px;
+
+}
+.fa-twitter {
+    background-color: transparent;
+    color: #4755ab;
+    font-size: 18px;
+}
+.fa-linkedin {
+    background-color: transparent;
+    color: #4755ab;
+    font-size: 18px;
+}
+.section-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+}
+.text-center {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+}
+.forms-29 {
+    background: #f8f9fa;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+ .forms-29 .content-29-form {
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 30px;
+ }
+
+.forms-29-form label {
+    color: var(--heading-color);
+}
+
+.input__style {
+    background: #fff;
+    border: 2px solid #e2e1e1;
+    padding: 14px 20px 14px 50px;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--para-color);
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: #4755AB 5px 5px;
+    border: 1px solid #4755AB;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.forms-29 {
+    background: #fff;
+    border: 2px solid #e2e1e1;
+    padding: 14px 20px 14px 50px;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--para-color);
+    width: 100%;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    outline: none;
+} 
+    .input__style:focus {
+        border: 2px solid #4755ab;
+    }
+
+.input-icon span.fa {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    color: #999;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.forms-29 select.input__style {
+    color: #777;
+    background: #fff url(../images/down.png) no-repeat 94% 52%;
+}
+
+.forms-29 button.btn {
+    margin: auto;
+    display: block;
+}
+
+    .forms-29 button.btn:hover {
+        background: #4755ab;
+        color:black;
+        
+    }
+
+.mt-2 {
+    background: #4755ab;
+    color: white;
+}
+    .mt-2:hover{
+        color:black;
+        border-radius:20px;
+    }
+    .forms-29 .forms-29-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 15px;
+    }
+
+@media only screen and (max-width: 767px) {
+    .forms-29 .forms-29-form {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .forms-29 button.btn {
+        margin: inherit;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .forms-29 .forms-29-form {
+        grid-template-columns: 1fr;
+        grid-gap: 0px;
+    }
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media only screen and (max-width: 736px) {
+    .team-main-6:before {
+        top: -3px;
+    }
+
+    .team-main-6:after {
+        left: 64%;
+        top: 47%;
+        right: 78px;
+        bottom: 20px;
+        width: 230px;
+        height: 270px;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .team-main-6:after {
+        position: absolute;
+        content: '';
+        left: 50%;
+        top: 35%;
+        right: 78px;
+        bottom: 20px;
+        z-index: -1;
+        width: 295px;
+        height: 295px;
+        margin: 0 auto;
+        border-radius: 250px;
+        margin-left: -152px;
+        margin-top: -110px;
+        background-color: #ffffff;
+    }
+
+    .team-main-6:before {
+        left: 0px;
+    }
+}
+
+
+.heros{
+    text-align: center;
+    color: white;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: 900;
+    background-color: #2e3b8f;
+    padding-top: 23vh;
+    padding-bottom: 23vh;
+}

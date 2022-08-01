@@ -1,0 +1,62 @@
+﻿@model HumanRMS.Models.notice_info
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/css/detailemployee.css" rel="stylesheet" />
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb">
+                <li class="breadcrumb-item"><a href="~/Notice/Index" style="color:darkblue">Notice</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detail-Notice</li>
+            </ol>
+        </nav>
+
+    </div>
+
+    <div class="dl-horizontal">
+        <h2>Details Notice</h2>
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.notice_subject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.notice_subject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.notice_date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.notice_date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.notice_time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.notice_time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.notice_dis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.notice_dis)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <i class="fa fa-pencil-square-o"> &nbsp;@Html.ActionLink("Edit", "Edit", new { id = Model.notice_id })</i>
+        <i class="fa fa-arrow-circle-o-left">&nbsp; @Html.ActionLink("Back to List", "Index")</i>
+    </p>
+</div>
